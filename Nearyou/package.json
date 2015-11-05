@@ -1,0 +1,14 @@
+{
+  "name": "Nearyou",
+  "version": "0.0.0",
+  "description": "Nearyou",
+  "main": "server.js",
+  "author": {
+    "name": "toa779",
+    "email": ""
+  },
+  "dependencies": {
+    "mongoose": "^4.1.7",
+    "nodeunit": "^0.9.1"
+  }
+}
