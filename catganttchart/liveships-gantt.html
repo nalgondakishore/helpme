@@ -1,0 +1,921 @@
+
+<!DOCTYPE html>
+    
+    <html>
+
+    <head>
+	    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+        <title>BP SHIPPING LTCC</title>
+        <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+         <link href="css/AdminLTE.css" rel="stylesheet" type="text/css" />
+  
+  		<link href="css/bootstrap.min.css" rel="stylesheet">
+
+
+
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="css/styles.css" rel="stylesheet">
+ <!--<link href="css/ej.theme.css" rel="stylesheet">
+<link href="css/ej.widgets.core.css" rel="stylesheet">-->
+<link href="http://cdn.syncfusion.com/16.1.0.37/js/web/flat-azure/ej.web.all.min.css" rel="stylesheet" />
+ <link href="css/stylish-portfolio.css" rel="stylesheet">
+
+         <script src="js/jquery-1.10.2.min.js"></script>    
+       <script src="js/jsrender.min.js"></script>  
+       <script src="js/jquery.globalize.min.js"></script>  
+       <script src="js/jquery.easing.1.3.min.js"></script>  
+       <script src="js/ej.web.all.js "></script>  
+       <script src="js/properties.js "></script>  
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+        <!-- Bootstrap -->
+ 
+        <!-- style sheet for default theme(flat azure) -->
+        
+
+       
+        <script type = "text/javascript">
+ 
+                            
+                    var fleetGroups = [{
+                            fleetId: 1,
+                            fleetName: "Aframax"
+                        }, {
+                            fleetId: 2,
+                            fleetName: "37C"
+                        }, {
+                            fleetId: 3,
+                            fleetName: "47V"
+                    }];
+                    var vesselGanttResources = [{
+                            vesselId: 3101009,
+                            vesselName: "British Falcon",
+                            fleetId: 1
+                        }, {
+                            vesselId: 3102440,
+                            vesselName: "CONTI GREENLAND",
+                            fleetId: 2
+                        }, {
+                            vesselId: 18139936,
+                            vesselName: "British Mariner",
+                            fleetId: 3
+                        }, {
+                            vesselId: 18139961,
+                            vesselName: "British Chief",
+                            fleetId: 3
+                        }, {
+                            vesselId: 18663710,
+                            vesselName: "ECO REVOLUTION",
+                            fleetId: 2
+                        }];
+                    var leaseGanttData = [{
+                        leaseId: 1,
+                        taskName: "",
+                        startDate: new Date("02/15/2018"),
+                        endDate: new Date("02/20/2018"),
+                       
+                        vesselId: [3101009]
+                    }, {
+                        leaseId: 2,
+                        taskName: "",
+                        startDate: new Date("01/17/2018"),
+                        endDate: new Date("09/17/2018"),
+                       
+                        vesselId: [3102440]
+                    }, {
+                        leaseId: 3,
+                        taskName: "",
+                        startDate: new Date("01/01/2018"),
+                        endDate: new Date("08/24/2019"),
+                        
+                        vesselId: [18139936]
+                    }, {
+                        leaseId: 4,
+                        taskName: "",
+                        startDate: new Date("04/10/2018"),
+                        endDate: new Date("07/12/2018"),
+                       
+                        vesselId: [18139959]
+                    }, {
+                        leaseId: 5,
+                        taskName: "",
+                        startDate: new Date("10/10/2018"),
+                        endDate: new Date("02/12/2019"),
+                        
+                        vesselId: [18139961]
+                    }, {
+                        leaseId: 6,
+                        taskName: "",
+                        startDate: new Date("04/13/2019"),
+                        endDate: new Date("06/14/2019"),
+                       
+                        vesselId: [18663710]
+                    }, ];
+                    	$(function ()
+                        {
+                            $("#costcontainer").ejChart(
+                            {
+                                //Initializing Primary X Axis	
+                                primaryXAxis:
+                                {
+                                    range: { interval: 1 },
+                                    labelRotation: 0
+                                },			
+                                
+                                //Initializing Primary Y Axis	
+                                primaryYAxis:
+                                {
+                                    labelFormat:"{value}",
+                                },			
+                                
+                                //Initializing Common Properties for all the series
+                                commonSeriesOptions: 
+                                {
+                                    type: 'stackingbar', 
+                                    enableAnimation: true,
+                                    tooltip :{visible:true , format: "#series.name# <br/> #point.x# : #point.y#"}
+                                },			
+                                
+                                //Initializing Series
+                                series: 
+                                [
+                                    {
+                                        points: [ { x: "$Value", y: 100 }],
+                                        name: 'Planned',
+                                        fill:"#1ABC9C" ,
+                                        marker: {
+                                        dataLabel: {
+                                            visible: true,
+                                            textPosition: "middle"
+                                        } } 
+                                    },                               
+                                    {
+                                        points: [ { x: "$Value", y: 40 }],
+                                        name: 'Committed',
+                                        fill:"#3498DB",
+                                    marker: {
+                                        dataLabel: {
+                                            visible: true,
+                                            textPosition: "middle"
+                                        } } 
+                                    }
+                                ],
+                                load:"loadTheme",
+                                title:{text: 'Cost Comparison'},
+                                size: { height: "140" },			
+                                canResize:true,
+                                legend: { visible: false, position: 'right', alignment:"near" }
+                            });
+                        }); 
+                	$(function ()
+                        {
+                            $("#vesselcontainer").ejChart(
+                            {
+                                //Initializing Primary X Axis	
+                                primaryXAxis:
+                                {
+                                    range: { interval: 1 },
+                                    labelRotation: 0
+                                },			
+                                
+                                //Initializing Primary Y Axis	
+                                primaryYAxis:
+                                {
+                                    labelFormat:"{value}",
+                                },			
+                                
+                                //Initializing Common Properties for all the series
+                                commonSeriesOptions: 
+                                {
+                                    type: 'stackingbar', 
+                                    enableAnimation: true,
+                                    tooltip :{visible:true , format: "#series.name# <br/> #point.x# : #point.y#"}
+                                },			
+                                
+                                //Initializing Series
+                                series: 
+                                [
+                                    {
+                                        points: [{ x: "Vessels", y: 60000 }],
+                                        name: 'Planned',
+                                        fill:"#1ABC9C" ,
+                                        marker: {
+                                        dataLabel: {
+                                            visible: true,
+                                            textPosition: "middle"
+                                        } } 
+                                    },                               
+                                    {
+                                        points: [{ x: "Vessels", y: 45000 }],
+                                        name: 'Committed',
+                                        fill:"#3498DB",
+                                    marker: {
+                                        dataLabel: {
+                                            visible: true,
+                                            textPosition: "middle"
+                                        } } 
+                                    }
+                                ],
+                                load:"loadTheme",
+                                title:{text: 'Vessels Comparison'},
+                                size: { height: "140" },			
+                                canResize:true,
+                                legend: { visible: true, position: 'right', alignment:"near" }
+                            });
+
+
+                          
+                        }); 
+                $(function () {
+                    $("#resourceGantt").ejGantt({
+                     
+                            dataSource: leaseGanttData,
+                            allowColumnResize: true,
+                            isResponsive: true,
+                            taskIdMapping: "leaseId",
+                            taskNameMapping: "taskName",
+                            startDateMapping: "startDate",
+                            endDateMapping: "endDate",
+                            progressMapping: "progress",
+                            durationMapping: "duration",
+                            groupNameMapping: "fleetName",
+                            groupIdMapping: "fleetId",
+                            groupCollection: fleetGroups,
+                            resources: vesselGanttResources,
+                            resourceIdMapping: "vesselId",
+                            resourceNameMapping: "vesselName",
+                            resourceInfoMapping: "vesselId",
+                            viewType: ej.Gantt.ViewType.ResourceView,
+                            selectionMode: "cell",
+                           // contextMenuOpen: contextMenuOpen,
+                           // enableContextMenu: true,
+                            scheduleHeaderSettings: {
+                                scheduleHeaderType: "year",
+                            },
+                          //  stripLines: [{ day: "02/06/2018", label: "Project Start", lineStyle: "solid", lineColor: "Darkblue", lineWidth: 2 } ],
+                            load: function () {
+                                this.getColumns()[0].width = window.theme == "material" ? 60 : 30;
+                            },
+                            isResponsive: true,
+                           toolbarSettings: {
+                           showToolbar: true,
+                            customToolbarItems: [{ text: "AddVessel", tooltipText: "Add Vessel" }, { text: "EditLease",tooltipText:"Edit Lease" },{ text: "SaveModel", tooltipText: "Save Model" }],
+                             },
+                             
+                            allowGanttChartEditing: true,
+                            allowDragAndDrop: true,
+                            editSettings: {
+                            allowEditing: true,
+                            allowAdding: true,
+                            allowDeleting: true,
+                            allowIndent: true,
+                            editMode: "normal"
+                                
+                            },
+                           // editDialogTemplate: editDialog,
+                            
+                            splitterSettings:{
+                                position: 150, 
+                            },
+
+                            load: function () {
+                                this.getColumns()[0].width = 180;
+                                
+                            },
+                            allowSorting: true,
+                            load: "load",
+                            create: "create",
+                            actionBegin: "actionBegin",
+                            actionComplete: "actionComplete",
+                            queryCellInfo: "queryCellInfo",
+                            beginEdit: "beginEdit",
+                            endEdit: "endEdit",
+                            rowDataBound: "rowDataBound",
+                            rowSelecting: "rowSelecting",
+                            rowSelected: "rowSelected",
+                            cellSelected: "cellSelected",
+                            taskbarEditing: "taskbarEditing",
+                            taskbarEdited: "taskbarEdited",
+                            showTaskNames: false,
+                           // taskbarSelected:"cellSelected",
+                            queryTaskbarInfo: "queryTaskbarInfo",
+                            expanding: "expanding",
+                            expanded: "expanded",
+                            collapsing: "collapsing",
+                            collapsed: "collapsed",
+                            toolbarClick: "toolbarclick",
+                           // renderedEditDialog:editDialog,
+                           //beginEdit:"editDialog",
+
+                        contextMenuTexts: {
+                            taskDetailsText: "Edit Task",
+                            deleteText: "Delete",
+                            
+                        },
+            
+                    });
+                    
+                }); 
+           
+
+                function load(args) {
+                    //this.getColumns()[0].width = window.theme == "material" ? 60 : 30;
+                console.log("Gantt <span class='eventTitle'>load</span> event called");
+                }		
+                function create(args) {
+                    console.log("Gantt <span class='eventTitle'>create</span> event called");
+                }
+                function actionBegin(args) {
+                    console.log("Gantt <span class='eventTitle'>actionBegin</span> event called" + args.requestType);
+                   
+                    if(args.requestType == "calledbeforeOpenEditDialog" )
+                   {
+                       console.log(args.data);
+                       editDialog(args.data);
+                       args.cancel = true;
+                   }
+                   if(args.requestType == "calledopenEditDialog" )
+                   {
+                       console.log(args.data);
+                       editDialog(args.data);
+                       args.cancel = true;
+                   }
+                   if(args.requestType == "beginedit" )
+                   {
+                       console.log(args.data);
+                       editDialog(args.data);
+                       args.cancel = true;
+                   }
+                   if(args.requestType == "calleddelete" )
+                   {
+                       console.log(args.data);
+                        editDialog(args.data);
+                       args.cancel = true;
+                   }
+                }
+                function actionComplete(args) {
+                    console.log("Gantt <span class='eventTitle'>actionComplete</span> event called");
+                    console.log(args.data);
+                    console.log(args.requestType);
+                }
+                function beginEdit(args) {
+                    console.log("Gantt <span class='eventTitle'>beginEdit</span> event called");
+                }		
+                function endEdit(args) {
+                    console.log("Gantt <span class='eventTitle'>endEdit</span> event called");
+                    console.log(args.data);
+                }
+                function queryCellInfo(args) {
+                    console.log("Gantt <span class='eventTitle'>queryCellInfo</span> event called");
+                }
+                function rowDataBound(args) {
+                    console.log("Gantt <span class='eventTitle'>rowDataBound</span> event called");
+                }
+                function rowSelecting(args) {
+                    console.log("Gantt <span class='eventTitle'>rowSelecting</span> event called");
+                }
+                function rowSelected(args) {
+                    console.log("Gantt <span class='eventTitle'>rowSelected</span> event called");
+                    //console.log(args.data);
+                }
+                function cellSelected(args) {
+                    console.log("Gantt <span class='eventTitle'>cellSelected</span> event called");
+                  
+                }
+                function expanding(args) {
+                    console.log("Gantt <span class='eventTitle'>expanding</span> event called");
+                }  		
+                function expanded(args) {
+                    console.log("Gantt <span class='eventTitle'>expanded</span> event called");
+                }  		
+                function collapsing(args) {
+                    console.log("Gantt <span class='eventTitle'>collapsing</span> event called");
+                } 		
+                function collapsed(args) {
+                    console.log("Gantt <span class='eventTitle'>collapsed</span> event called");
+                }  		
+                function taskbarEditing(args) {
+                    console.log("Gantt <span class='eventTitle'>taskbarEditing</span> event called");
+                }  		
+                function queryTaskbarInfo(args) {
+                console.log("Gantt <span class='eventTitle'>queryTaskBarInfo</span> event called");
+                } 		
+                function taskbarEdited (args) {
+                    console.log("Gantt <span class='eventTitle'>taskbarEdited </span> event called");
+                }
+                function toolbarclick(args) {
+                    console.log("Gantt <span class='eventTitle'>toolbarClick </span> event called ==  ", args.itemName);
+                    var toolbarLocale = {Add: "Add Vessel", Edit: "Edit Lease",Save:"Save Model" };
+                   // var locale = args.model.locale;
+                    if (args.itemName == toolbarLocale.Edit) {
+
+                      console.log("Edit event called");
+                        $("#editModal").modal('show');
+                         console.log("Gantt <span class='eventTitle'>toolbarClick </span> event called ==  ", args.data);
+                    }
+                   
+                    if (args.itemName == toolbarLocale.Add) {
+                      
+
+                          console.log("Reset event called");
+                         $("#addModal").modal('show');
+                          
+                        
+                    }
+                }
+
+                
+                function onClear() {
+                    $("#EventLog").html("");
+                }
+
+                $(document).ready(function () {
+               
+                        $("#live-ships").click(function (e) {
+                            //e.preventDefault();
+                             $("#live-ships-li").addClass('active');
+                            $("#live-ships-div").addClass('active in');
+                            
+                            $("#model-ships-div").removeClass('active in');
+                             $("#model-ships-li").removeClass('active');
+                            
+                            $("#create-model-div").removeClass('active in');
+                             $("#create-model-li").removeClass('active');
+                                                       
+                              window.location.href = "liveships-gantt.html";
+                           
+                        });
+                        $("#model-ships").click(function (e) {
+                            //e.preventDefault();
+                            
+                           $("#live-ships-li").removeClass('active');
+                            $("#live-ships-div").removeClass('active in');
+                            
+                            $("#model-ships-div").addClass('active in');
+                             $("#model-ships-li").addClass('active');
+                            
+                            $("#create-model-div").removeClass('active in');
+                             $("#create-model-li").removeClass('active');
+                             window.location.href = "model-ships-search.html";
+                        });
+
+                         $("#create-model").click(function (e) {
+                            //e.preventDefault();
+                             $("#live-ships-li").removeClass('active');
+                            $("#live-ships-div").removeClass('active in');
+                            
+                            $("#model-ships-div").removeClass('active in');
+                             $("#model-ships-li").removeClass('active');
+                            
+                            $("#create-model-div").addClass('active in');
+                             $("#create-model-li").addClass('active');
+                              window.location.href = "dashboard-gantt.html";
+                        });
+        
+                });
+       
+                function editDialog(data) {
+                    console.log("edit dialog args.data  " + data);
+                     $("#editModal").modal('show');
+                }
+        
+                function contextMenuOpen(args) {
+
+                    var isExpandable = true, isCollapsable = true, data;
+                    data = args.item;
+                    if (data && data.hasChildRecords) {
+                        if (data.expanded)
+                            isExpandable = false;
+                        else
+                            isCollapsable = false;
+                    } else {
+                        isExpandable = false;
+                        isCollapsable = false;
+                    }
+                    
+                       // args.contextMenuItems.push.apply(args.contextMenuItems, contextMenuItems);
+                    
+                }
+
+                function customMenuAddHandler(args) {
+                    var currentMenuId = args.menuId,
+                        tempData = args.data && $.extend({}, args.data.item), rowPosition;
+                    if (tempData)
+                        delete tempData[this.model.childMapping];
+
+                    if (currentMenuId == "Top") {
+                        rowPosition = ej.TreeGrid.RowPosition.Top;
+                    }
+                    else if (currentMenuId == "Bottom") {
+                        rowPosition = ej.TreeGrid.RowPosition.Bottom;
+                    }
+                    else if (currentMenuId == "Child") {
+                        rowPosition = ej.TreeGrid.RowPosition.Child;
+                    }
+                    this.addRecord(tempData, rowPosition);
+                }
+                function customMenuExpandCollapseHandler(args) {
+                    this.expandCollapseRecord(args.data.taskId);
+                }
+
+
+         
+        </script>
+        <style type="text/css" class="cssStyles">
+            .AddVessel:before {
+               
+               content :  url('fonts/Add.png');
+            }
+
+             .EditLease:before {
+               content :  url('fonts/Edit.png');
+            }
+            .SaveModel:before {
+               content :  url('fonts/Save.png');
+            }
+
+            
+             .e-expandIcon:before {
+            content: "\e703";
+        }
+
+        .e-collapseIcon:before {
+            content: "\e707";
+        }
+
+        .e-aboveIcon:before {
+            content: "\e7e5";
+        }
+
+        .e-belowIcon:before {
+            content: "\e7e4";
+        }
+
+        .e-topIcon:before {
+            content: "\e7e2";
+        }
+
+        .e-bottomIcon:before {
+            content: "\e7e1";
+        }
+
+        .e-childIcon:before {
+            content: "\e7e3";
+        }
+
+
+
+
+
+    </style>
+
+
+
+            
+
+
+
+    </head>
+
+    
+    <body style="padding-top:0px; color:green">   
+
+        <nav id = "topnavbar" class="" style="margin-bottom: 10px; background-color:#007f00;color:white">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>                        
+                </button>
+                <a class="navbar-brand" href="dashboard-gantt.html" style="color:white;"><strong>BP Shipping LTCC Dashboard</strong></a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                
+                <ul class="nav navbar-nav navbar-right">
+                    <li id="create-model-li" class="" ><a id="create-model"  href="dashboard-gantt.html" style="color:white;font-weight:bold;" href="#">Home</a></li>
+                    <li id="live-ships-li" class="active"><a id="live-ships" href="liveships-gantt.html" style="color:white; font-weight:bold;" href="#">Live Ships</a></li>
+                   
+                    <li id="model-ships-li" class="" ><a id="model-ships" href="model-ships-search.html" style="color:white;font-weight:bold;" href="#">Model Ships</a></li>
+                    
+                    <li><a href="#" style="color:white;"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+                </div>
+            </div>
+            </nav>
+        <!--Add  Gantt control here-->  
+        <div class="page-container">
+            <div class="bs-example bs-example-tabs">
+                <div id="myTabContent" class="tab-content">
+                    <!-- Live Ships page start-->
+                    <div class="tab-pane box fade active in " id="live-ships-div">
+                        
+                        <div class="container target " style="width: 99%;" >
+                              <div class="box-header">
+                                        <h3 class="box-title">Live Ships Status</h3>
+                                    </div>      
+                            <div class="container-fluid profile-list" style="width: 100%;">
+                                
+                                <div class="row row-offcanvas row-offcanvas-left"  >
+                                    
+                                    <div class="col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+                                    
+                                        <form class="form-horizontal">
+                                                
+                                            <fieldset>
+
+                                                <div class="form-group">
+                                                <label class="control-label  " for="sortCoption"><u>Show Results for</u></label></div>
+                                            <!-- Filter  -->
+                                                <div class="form-group margin-bottom-01   pull-left">
+                                                    <label class="control-label" for="sortCoption">Fleet:</label></div>
+                                                <div class="form-group  ">
+                                                    <div >
+                                                        <select id="sortcategory"  name="sortcaption" class="form-control">
+                                                                <option value='hello'  ><a >hello</a></option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                            <!-- end Filter -->
+                                            <!-- Filter  -->
+                                                <div class="form-group margin-bottom-01   pull-left">
+                                                    <label class="control-label" for="sortCoption">Vessel/Ship:</label></div>
+                                                <div class="form-group ">
+                                                    <div >
+                                                        <select id="sortcategory"  name="sortcaption" class="form-control">
+                                                                <option value='hello'  ><a >hello</a></option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                            <!-- end Filter -->
+                                                                                                    <!-- Filter  -->
+                                                <div class="form-group margin-bottom-01   pull-left">
+                                                    <label class="control-label" for="sortCoption">Vessel Type:</label></div>
+                                                <div class="form-group  ">
+                                                    <div >
+                                                        <select id="sortcategory"  name="sortcaption" class="form-control">
+                                                                <option value='hello'  ><a >hello</a></option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                            <!-- end Filter -->
+                                                                                                    <!-- Filter  -->
+                                                <div class="form-group margin-bottom-01   pull-left">
+                                                    <label class="control-label" for="sortCoption">From Date:</label></div>
+                                                <div class="form-group ">
+                                                    <div >
+                                                        <select id="sortcategory"  name="sortcaption" class="form-control">
+                                                                <option value='hello'  ><a >hello</a></option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                            <!-- end Filter -->
+                                                                                                    <!-- Filter  -->
+                                                <div class="form-group margin-bottom-01   pull-left">
+                                                    <label class="control-label" for="sortCoption">To Date:</label></div>
+                                                <div class="form-group ">
+                                                    <div >
+                                                        <select id="sortcategory"  name="sortcaption" class="form-control">
+                                                                <option value='hello'  ><a >hello</a></option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                            <!-- end Filter -->
+                                                                                                    <!-- Filter  -->
+                                                <div class="form-group margin-bottom-01   pull-left">
+                                                    <label class="control-label" for="sortCoption">Status:</label></div>
+                                                <div class="form-group  ">
+                                                    <div >
+                                                        <select id="sortcategory"  name="sortcaption" class="form-control">
+                                                                <option value='hello'  ><a >hello</a></option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                            <!-- end Filter -->
+                                                
+                                                <div class="form-group margin-top-05 pull-right">
+                                            <button id="filter" click="applyfilter()" name="filter" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-filter"></span> Apply Filter</button></div>
+                                            </fieldset>
+                                        </form>
+                                        
+                                                                                    
+
+                                    </div><!--/span-->
+
+                                    <div class="col-sm-9 main">
+                                    
+                                    <!--toggle sidebar button-->
+                                            <p class="visible-xs">
+                                                <button type="button" class="btn btn-primary btn-xs" ng-click="toggle = !toggle" data-toggle="offcanvas"><i class="glyphicon glyphicon-chevron-left"></i></button>
+                                            </p>
+                                            
+                                            </div>
+                                                <div class="">
+                                                    <div id="myTabContent" class="tab-content">
+                                                       
+                                                        <div class="tab-pane fade active in " id="live-ships-div">
+                                                            <form id="live-ships-form" class="form-horizontal">
+                                                                <div id="resourceGantt" style="height: 400px; width:88%;" ></div> 
+                                                                </div>
+                                                                     
+                                                        <div class="cols-sample-area col-sm-5">
+                                                            <div id="vesselcontainer"></div> 
+                                                        </div>
+                                                        <div class="cols-sample-area col-sm-4">
+                                                            <div id="costcontainer"></div> 
+                                                        </div>
+                                                            </form>
+                                                        </div>
+                                                        
+
+
+                                                    </div>
+                                                </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                    
+                    
+                   </div>
+                   
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Modal-->
+        <div class="modal fade bs-modal-sm" modal="showModal"  id="addModal" tabindex="-1" role="dialog"  aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                    <br>
+                    <div class="bs-example bs-example-tabs">
+                        <ul id="myTab" class="nav nav-tabs">
+                            <li class="active"><a  id="login-signin" data-toggle="tab">Add Vessel</a></li>
+                        
+                            
+                        </ul>
+                    </div>
+                    <div class="modal-body">
+                        <div id="myTabContent" class="tab-content">
+
+                            <div class="tab-pane fade active in" id="login-signin-div">
+                                <form class="form-horizontal">
+                                    <fieldset>
+
+                                        <div class="form-group">
+                                        <label class="col-md-4 control-label" for="selectbasic"> Fleet Name:</label>
+                                        <div class="col-md-4">
+                                            <select id="selectfleet" name="selectfleet" class="form-control">
+                                            <option value="1">Fleet 1</option>
+                                            <option value="2">Fleet 2</option>
+                                            </select>
+                                        </div>
+                                        </div>            
+                                        <!-- Select Basic -->
+                                        <div class="form-group">
+                                        <label class="col-md-4 control-label" for="selectbasic"> Vessel Name:</label>
+                                        <div class="col-md-4">
+                                            <select id="selectvessel" name="selectvessel" class="form-control">
+                                            <option value="1">BRITISH EAGLE</option>
+                                            <option value="2">BRITISH OSTRICH</option>
+                                            </select>
+                                        </div>
+                                        </div>
+
+                                        <!-- Text input-->
+                                        <div class="form-group">
+                                        <label class="col-md-4 control-label" for="textinput">Lease StartDate</label>  
+                                        <div class="col-md-4">
+                                        <input id="startdate" name="startdate" type="text" placeholder="Lease Start Date:" class="form-control input-md">
+                                        
+                                        </div>
+                                        </div>
+
+                                        <!-- Text input-->
+                                        <div class="form-group">
+                                        <label class="col-md-4 control-label" for="textinput">Lease End Date</label>  
+                                        <div class="col-md-4">
+                                        <input id="enddate" name="enddate" type="text" placeholder="Lease End Date:" class="form-control input-md">
+
+                                        </div>
+                                        </div>
+
+                                        <div class="form-group" margin-top-02>
+                                        <div class="col-md-4"></div>
+                                        <div class="col-md-4">
+                                        <div class="controls">
+                                                <button id="addvessel" name="addvessel"  class="btn  btn-success">Add Vessel</button>
+                                            </div>   </div>
+                                        </div>
+
+                                            
+                                    
+                                    </fieldset>
+                                </form>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <center>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade bs-modal-sm" modal="showModal"  id="editModal" tabindex="-1" role="dialog"  aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <br>
+                    <div class="bs-example bs-example-tabs">
+                        <ul id="myTab" class="nav nav-tabs">
+                            <li class="active"><a  id="login-signin" data-toggle="tab">Edit Vessel</a></li>
+                        
+                            
+                        </ul>
+                    </div>
+                    <div class="modal-body">
+                        <div id="myTabContent" class="tab-content">
+
+                            <div class="tab-pane fade active in" id="login-signin-div">
+                                <form class="form-horizontal">
+                                    <fieldset>
+
+
+                                                                        <!-- Select Basic -->
+                                        <div class="form-group">
+                                        <label class="col-md-4 control-label" for="selectbasic"> Vessel Name:</label>
+                                        <div class="col-md-4">
+                                            <select id="selectbasic" name="selectbasic" class="form-control">
+                                            <option value="1">BRITISH EAGLE</option>
+                                            <option value="2">BRITISH OSTRICH</option>
+                                            </select>
+                                        </div>
+                                        </div>
+
+                                        <!-- Text input-->
+                                        <div class="form-group">
+                                        <label class="col-md-4 control-label" for="textinput">Lease StartDate</label>  
+                                        <div class="col-md-4">
+                                        <input id="startdate" name="startdate" type="text" placeholder="Lease Start Date:" class="form-control input-md">
+                                        
+                                        </div>
+                                        </div>
+
+                                        <!-- Text input-->
+                                        <div class="form-group">
+                                        <label class="col-md-4 control-label" for="textinput">Lease End Date</label>  
+                                        <div class="col-md-4">
+                                        <input id="enddate" name="enddate" type="text" placeholder="Lease End Date:" class="form-control input-md">
+
+                                        </div>
+                                        </div>
+
+                                        <div class="form-group col-sm-12" margin-top-02>
+                                        <div class="col-md-3 col-sm-0"></div>
+                                        <div class="col-md-3 col-sm-6">
+                                        <div class="controls">
+                                                <button id="addvessel" name="addvessel"  class="btn btn-sm btn-success">Update Leasing </button>
+                                            </div>  
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                        <div class="controls">
+                                                <button id="deletevessel" name="addvessel"  class="btn btn-sm  btn-danger">Delete Leasing </button>
+                                            </div>  
+                                        </div>
+                                        <div class="col-md-3 col-sm-0"></div>
+                                        </div>
+
+                                            
+                                    
+                                    </fieldset>
+                                </form>
+                            </div>
+                            
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>

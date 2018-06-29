@@ -1,0 +1,166 @@
+[
+    {
+        "benchmark_fleet_cd": "37",
+        "full_benchmark_cd": "37C"
+    },
+    {
+        "benchmark_fleet_cd": "37",
+        "full_benchmark_cd": "37C Plan"
+    },
+    {
+        "benchmark_fleet_cd": "37",
+        "full_benchmark_cd": "37CCOMP"
+    },
+    {
+        "benchmark_fleet_cd": "37",
+        "full_benchmark_cd": "37CED"
+    },
+    {
+        "benchmark_fleet_cd": "37",
+        "full_benchmark_cd": "37CEY"
+    },
+    {
+        "benchmark_fleet_cd": "37",
+        "full_benchmark_cd": "37CF"
+    },
+    {
+        "benchmark_fleet_cd": "37",
+        "full_benchmark_cd": "37D"
+    },
+    {
+        "benchmark_fleet_cd": "37",
+        "full_benchmark_cd": "37D Plan"
+    },
+    {
+        "benchmark_fleet_cd": "37",
+        "full_benchmark_cd": "37DCOMP"
+    },
+    {
+        "benchmark_fleet_cd": "37",
+        "full_benchmark_cd": "37DED"
+    },
+    {
+        "benchmark_fleet_cd": "37",
+        "full_benchmark_cd": "37DF"
+    },
+    {
+        "benchmark_fleet_cd": "47",
+        "full_benchmark_cd": "47V"
+    },
+    {
+        "benchmark_fleet_cd": "Aframax",
+        "full_benchmark_cd": "AFRAMAXB"
+    },
+    {
+        "benchmark_fleet_cd": "Aframax",
+        "full_benchmark_cd": "AFRAMAXB Plan"
+    },
+    {
+        "benchmark_fleet_cd": "Aframax",
+        "full_benchmark_cd": "AFRAMAXBCOMP"
+    },
+    {
+        "benchmark_fleet_cd": "Aframax",
+        "full_benchmark_cd": "AFRAMAXBNONICE"
+    },
+    {
+        "benchmark_fleet_cd": "Aframax",
+        "full_benchmark_cd": "AFRAMAXT"
+    },
+    {
+        "benchmark_fleet_cd": "Aframax",
+        "full_benchmark_cd": "AFRAMAXT Plan"
+    },
+    {
+        "benchmark_fleet_cd": "Aframax",
+        "full_benchmark_cd": "AFRAMAXTWINTER"
+    },
+    {
+        "benchmark_fleet_cd": "Aframax",
+        "full_benchmark_cd": "STAR"
+    },
+    {
+        "benchmark_fleet_cd": "LPG",
+        "full_benchmark_cd": "LPG"
+    },
+    {
+        "benchmark_fleet_cd": "LR2",
+        "full_benchmark_cd": "LR2"
+    },
+    {
+        "benchmark_fleet_cd": "Panamax",
+        "full_benchmark_cd": "PANAMAXC1"
+    },
+    {
+        "benchmark_fleet_cd": "Panamax",
+        "full_benchmark_cd": "PANAMAXC1 Plan"
+    },
+    {
+        "benchmark_fleet_cd": "Panamax",
+        "full_benchmark_cd": "PANAMAXCO"
+    },
+    {
+        "benchmark_fleet_cd": "Panamax",
+        "full_benchmark_cd": "PANAMAXD1"
+    },
+    {
+        "benchmark_fleet_cd": "Panamax",
+        "full_benchmark_cd": "PANAMAXD2"
+    },
+    {
+        "benchmark_fleet_cd": "Panamax",
+        "full_benchmark_cd": "PANAMAXD2 Plan"
+    },
+    {
+        "benchmark_fleet_cd": "Panamax",
+        "full_benchmark_cd": "PANAMAXDE"
+    },
+    {
+        "benchmark_fleet_cd": "Panamax",
+        "full_benchmark_cd": "PANAMAXDO"
+    },
+    {
+        "benchmark_fleet_cd": "Panamax",
+        "full_benchmark_cd": "PANAMAXDT"
+    },
+    {
+        "benchmark_fleet_cd": "Suezmax",
+        "full_benchmark_cd": "SUEZMAX1"
+    },
+    {
+        "benchmark_fleet_cd": "Suezmax",
+        "full_benchmark_cd": "SUEZMAX1 Plan"
+    },
+    {
+        "benchmark_fleet_cd": "Suezmax",
+        "full_benchmark_cd": "SUEZMAX2"
+    },
+    {
+        "benchmark_fleet_cd": "Suezmax",
+        "full_benchmark_cd": "SUEZMAX2 Plan"
+    },
+    {
+        "benchmark_fleet_cd": "Suezmax",
+        "full_benchmark_cd": "SUEZMAXD"
+    },
+    {
+        "benchmark_fleet_cd": "Suezmax",
+        "full_benchmark_cd": "SUEZMAXN"
+    },
+    {
+        "benchmark_fleet_cd": "VLCC",
+        "full_benchmark_cd": "VLCCE"
+    },
+    {
+        "benchmark_fleet_cd": "VLCC",
+        "full_benchmark_cd": "VLCCE1"
+    },
+    {
+        "benchmark_fleet_cd": "VLCC",
+        "full_benchmark_cd": "VLCCE1 Plan"
+    },
+    {
+        "benchmark_fleet_cd": "VLCC",
+        "full_benchmark_cd": "VLCCP"
+    }
+]

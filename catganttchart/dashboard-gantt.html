@@ -1,0 +1,631 @@
+
+<!DOCTYPE html>
+    
+    <html>
+
+    <head>
+	    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+        <title>BP SHIPPING LTCC</title>
+        <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+         <link href="css/AdminLTE.css" rel="stylesheet" type="text/css" />
+  
+  		<link href="css/bootstrap.min.css" rel="stylesheet">
+
+
+
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="css/styles.css" rel="stylesheet">
+<link href="css/ej.theme.css" rel="stylesheet">
+<link href="css/ej.widgets.core.css" rel="stylesheet">
+ <!--<link href="http://cdn.syncfusion.com/16.1.0.37/js/web/flat-azure/ej.web.all.min.css" rel="stylesheet" />-->
+ <link href="css/stylish-portfolio.css" rel="stylesheet">
+
+         <script src="js/jquery-1.10.2.min.js"></script>    
+       <script src="js/jsrender.min.js"></script>  
+       <script src="js/jquery.globalize.min.js"></script>  
+       <script src="js/jquery.easing.1.3.min.js"></script>  
+       <script src="js/ej.web.all.js "></script>  
+       <script src="js/properties.js "></script>  
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+        <!-- Bootstrap -->
+ 
+        <!-- style sheet for default theme(flat azure) -->
+        
+
+       
+        <script type = "text/javascript">
+ 
+                            
+                    var fleetGroups = [{
+                            fleetId: 1,
+                            fleetName: "Fleet 1"
+                        }, {
+                            fleetId: 2,
+                            fleetName: "Fleet 2"
+                        }, {
+                            fleetId: 3,
+                            fleetName: "Fleet 3"
+                    }];
+                    var vesselGanttResources = [{
+                            vesselId: 1,
+                            vesselName: "Anne Dodsworth",
+                            fleetId: 1
+                        }, {
+                            vesselId: 2,
+                            vesselName: "David William",
+                            fleetId: 1
+                        }, {
+                            vesselId: 3,
+                            vesselName: "Nancy Davolio",
+                            fleetId: 2
+                        }, {
+                            vesselId: 4,
+                            vesselName: "Janet Leverling",
+                            fleetId: 2
+                        }, {
+                            vesselId: 5,
+                            vesselName: "Romey Wilson",
+                            fleetId: 2
+                        }, {
+                            vesselId: 6,
+                            vesselName: "Michael Suyama",
+                            fleetId: 3
+                    }];
+                    var leaseGanttData = [{
+                        leaseId: 1,
+                        taskName: "Plan timeline",
+                        startDate: new Date("02/06/2018"),
+                        endDate: new Date("05/10/2018"),
+                       
+                        vesselId: [1]
+                    }, {
+                        leaseId: 2,
+                        taskName: "Plan budget",
+                        startDate: new Date("06/13/2018"),
+                        endDate: new Date("09/17/2018"),
+                       
+                        vesselId: [1]
+                    }, {
+                        leaseId: 3,
+                        taskName: "Allocate resources",
+                        startDate: new Date("02/20/2019"),
+                        endDate: new Date("08/24/2019"),
+                        
+                        vesselId: [1]
+                    }, {
+                        leaseId: 4,
+                        taskName: "Software Specification",
+                        startDate: new Date("04/10/2018"),
+                        endDate: new Date("07/12/2018"),
+                       
+                        vesselId: [2]
+                    }, {
+                        leaseId: 5,
+                        taskName: "Develop prototype",
+                        startDate: new Date("10/10/2018"),
+                        endDate: new Date("02/12/2019"),
+                        
+                        vesselId: [2]
+                    }, {
+                        leaseId: 6,
+                        taskName: "Get approval from customer",
+                        startDate: new Date("04/13/2019"),
+                        endDate: new Date("06/14/2019"),
+                       
+                        vesselId: [2]
+                    }, ];
+                    	$(function ()
+                        {
+                            $("#costcontainer").ejChart(
+                            {
+                                //Initializing Primary X Axis	
+                                primaryXAxis:
+                                {
+                                    range: { interval: 1 },
+                                    labelRotation: 0
+                                },			
+                                
+                                //Initializing Primary Y Axis	
+                                primaryYAxis:
+                                {
+                                    labelFormat:"{value}",
+                                },			
+                                
+                                //Initializing Common Properties for all the series
+                                commonSeriesOptions: 
+                                {
+                                    type: 'stackingbar', 
+                                    enableAnimation: true,
+                                    tooltip :{visible:true , format: "#series.name# <br/> #point.x# : #point.y#"}
+                                },			
+                                
+                                //Initializing Series
+                                series: 
+                                [
+                                    {
+                                        points: [ { x: "$Value", y: 100 }],
+                                        name: 'Planned',
+                                        fill:"#1ABC9C" ,
+                                        marker: {
+                                        dataLabel: {
+                                            visible: true,
+                                            textPosition: "middle"
+                                        } } 
+                                    },                               
+                                    {
+                                        points: [ { x: "$Value", y: 40 }],
+                                        name: 'Committed',
+                                        fill:"#3498DB",
+                                    marker: {
+                                        dataLabel: {
+                                            visible: true,
+                                            textPosition: "middle"
+                                        } } 
+                                    }
+                                ],
+                                load:"loadTheme",
+                                title:{text: 'Cost Comparison'},
+                                size: { height: "140" },			
+                                canResize:true,
+                                legend: { visible: false, position: 'right', alignment:"near" }
+                            });
+                        }); 
+                	$(function ()
+                        {
+                            $("#vesselcontainer").ejChart(
+                            {
+                                //Initializing Primary X Axis	
+                                primaryXAxis:
+                                {
+                                    range: { interval: 1 },
+                                    labelRotation: 0
+                                },			
+                                
+                                //Initializing Primary Y Axis	
+                                primaryYAxis:
+                                {
+                                    labelFormat:"{value}",
+                                },			
+                                
+                                //Initializing Common Properties for all the series
+                                commonSeriesOptions: 
+                                {
+                                    type: 'stackingbar', 
+                                    enableAnimation: true,
+                                    tooltip :{visible:true , format: "#series.name# <br/> #point.x# : #point.y#"}
+                                },			
+                                
+                                //Initializing Series
+                                series: 
+                                [
+                                    {
+                                        points: [{ x: "Vessels", y: 60000 }],
+                                        name: 'Planned',
+                                        fill:"#1ABC9C" ,
+                                        marker: {
+                                        dataLabel: {
+                                            visible: true,
+                                            textPosition: "middle"
+                                        } } 
+                                    },                               
+                                    {
+                                        points: [{ x: "Vessels", y: 45000 }],
+                                        name: 'Committed',
+                                        fill:"#3498DB",
+                                    marker: {
+                                        dataLabel: {
+                                            visible: true,
+                                            textPosition: "middle"
+                                        } } 
+                                    }
+                                ],
+                                load:"loadTheme",
+                                title:{text: 'Vessels Comparison'},
+                                size: { height: "140" },			
+                                canResize:true,
+                                legend: { visible: true, position: 'right', alignment:"near" }
+                            });
+
+
+                             $("#piecontainer").ejChart(
+                                {
+                                    //Initializing Series
+                                    series: 
+                                    [
+                                        {
+                                            points:[{ x: 'TC Fleet', y:53.3, text:"Time charter Ships" },
+                                                    { x: 'Core Fleet', y: 55.7, text:"BP Ships" }],
+                                                   
+                                            marker: 
+                                            {
+                                                dataLabel: 
+                                                {
+                                                    visible: true,
+                                                    shape: 'none', 
+                                                    connectorLine: { type: 'line', color: 'black' },
+                                                    font: { size: '14px' },
+                                                    enableContrastColor:true
+                                                }
+                                            },
+                                            tooltip: { visible: true, format : "#point.x# : #point.y#%" },
+                                            border: { width: 1, color: 'white' },
+                                            name: 'Fleet Consumption', 
+                                            type: "doughnut", 
+                                            enableAnimation: true,
+                                            labelPosition: 'outside',
+                                            enableSmartLabels: true,
+                                            explode:true, 
+                                            startAngle: -90, 
+                                            endAngle: 90
+                                        }
+                                    ],
+                                    title: { text: 'Ships allocation in 2018' },
+                                    isResponsive: true,
+                                    size:{height:"300"},
+                                    seriesRendering:"seriesRender",
+                                    load: "loadTheme",
+                                    legend: { visible: false, shape: 'circle' },                        
+                                });
+
+
+                                $("#splineareacontainer").ejChart(
+                                {
+                                    //Initializing Primary X Axis	
+                                    primaryXAxis:
+                                    {
+                                        axisLine: { visible: false },
+                                        majorGridLines: { visible: false },
+                                        majorTickLines: { visible: false },
+                                        title: { text: 'Year' }
+                                    },		
+                                    
+                                    //Initializing Primary Y Axis	
+                                    primaryYAxis:
+                                    {
+                                        axisLine: { visible: false },
+                                        majorTickLines: { visible: false },
+                                        title: { text: 'Value in M$' },
+                                        labelFormat: '${value}M'
+                                    },		
+                                    
+                                    //Initializing Common Properties for all the series
+                                    commonSeriesOptions: 
+                                    {
+                                        type: 'splinearea', 
+                                        enableAnimation: true,
+                                        style: { border :{width: 2 }}
+
+                                    },	
+                                    
+                                    //Initializing Series
+                                    series: 
+                                    [
+                                        {
+                                            points: [{ x: 'Jan', y: 17 }, { x: 'Feb', y: 27 }, { x: 'Mar', y: 51 }, { x: 'Apr', y: 74 }, 
+                                                    { x: 'May', y: 92 }, { x: 'June', y: 92 }, { x: 'July', y: 104 }, { x: 'Aug', y: 115}, 
+                                                    { x: 'Sept', y: 120 }, { x: 'Oct', y: 133 },{ x: 'Nov', y: 163}, { x: 'Dec', y: 163 }],							 
+                                            name: 'Planned',
+                                            border :{color: 'transparent'}, 
+                                            opacity: 0.5, 
+                                            fill: '#C4C24A' 
+                                        },               
+                                        {
+                                            points: [{ x: 'Jan', y: 0 }, { x: 'Feb', y: 9 }, { x: 'Mar', y: 13 }, { x: 'Apr', y: 18 }, 
+                                                    { x: 'May', y: 25 }, { x: 'June', y: 29 }],								 
+                                            name: 'Actual', 
+                                            opacity: 0.5, 
+                                            border :{color: 'transparent'},
+                                            fill: '#69D2E7' 
+                                        },                                  
+                                        {
+                                            points: [ { x: 'July', y: 6 }, { x: 'Aug', y: 12}, 
+                                                    { x: 'Sept', y: 17 }, { x: 'Oct', y: 59 },{ x: 'Nov', y: 98}, { x: 'Dec', y: 108 }],								 
+                                            name: 'Remaining', 
+                                            opacity: 0.5, 
+                                            border :{color: 'transparent'}, 
+                                            fill: '#6A4B82' 
+                                        }
+                                    ],
+                                    title :{text: 'Plan, Actual and Updated View'},
+                                    isResponsive: true,
+                                    load:"loadTheme",
+                                    size: { height: "300" },
+                                    legend: { visible: true }
+                                });
+                                 $("#waterfallcontainer").ejChart(
+                                    {
+                                        //Initializing Primary X Axis	 
+                                        primaryXAxis:
+                                        {
+                                            title: { text: 'Year' },
+                                        },
+                                        
+                                        //Initializing Primary Y Axis	
+                                        primaryYAxis:
+                                        {
+                                            labelFormat:"{value}",
+                                            title: { text: 'No.of Vessels' }                          
+                                        },
+                                        
+                                        //Initializing Common Properties for all the series
+                                        commonSeriesOptions: 
+                                        {
+                                            type: 'bar', 
+                                            enableAnimation: true,
+                                            tooltip:{visible:true, format: "#series.name# <br/> #point.x# : #point.y#"},
+                                            marker:
+                                            {
+                                                dataLabel:
+                                                {
+                                                    font: { size:'13px',fontFamily:'Segoe UI',fontStyle:'Normal',fontWeight:'regular'},
+                                                    textPosition: 'top',
+                                                    horizontalTextAlignment:"near",
+                                                    visible:true,
+                                                    enableContrastColor:true						
+                                                },
+                                            }
+                                        },
+                                        
+                                        //Initializing Series
+                                        series:
+                                        [
+                                            {
+                                                points: [{ x: 2015, y: 60 }, { x:2016, y: 70}, { x: 2017, y: 40 }, { x: 2018, y: 50 },
+                                                        { x: 2019, y: 30}, { x: 2020, y: 45 }],
+                                                name: 'Planned'
+                                            },                
+                                            {
+                                                points: [{ x: 2015, y: 54 }, { x:2016, y: 64}, { x: 2017, y: 38 }, { x: 2018, y: 5 },
+                                                        { x: 2019, y: 0}, { x: 2020, y: 0 }],
+                                                name: 'Actual'
+                                            }   
+                                        ],
+                                        load:"loadTheme",
+                                        displayTextRendering:"OndataLabel",
+                                        isResponsive: true,
+                                        showTooltip: true,
+                                        title:{text: 'Planned vs Actual'},
+                                        size: { height: "300" },
+                                        legend: { visible: true, position: 'right', alignment:"near" }
+                                    });
+
+                                    $("#splinecontainer").ejChart(
+                                        {
+                                            //Initializing Primary X Axis	
+                                            primaryXAxis:
+                                            {
+                                                title: { text: 'Month' }
+                                            },			
+                                            
+                                            //Initializing Primary Y Axis	
+                                            primaryYAxis:
+                                            {
+                                             
+                                                title: { text: '% Actual vs Planned' },
+                                                labelFormat: "{value}%"
+                                            },			
+                                            
+                                            //Initializing Common Properties for all the series
+                                            commonSeriesOptions: 
+                                            {
+                                                type: 'spline', 
+                                                enableAnimation: true,
+                                                marker:
+                                                {
+                                                    shape: 'circle',
+                                                    visible: true
+                                                },                              
+                                                tooltip: {visible: true, format: "#point.x# <br/> #series.name# : #point.y#"}
+                                            },			
+                                            
+                                            //Initializing Series
+                                            series: 
+                                            [
+                                                {
+                                                    points: [{ x: 'Jan', y: 100 }, { x: 'Feb', y: 100 }, { x: 'Mar', y: 94 }, { x: 'Apr', y: 88 }, 
+                                                            { x: 'May', y: 85 }, { x: 'Jun', y: 80 }, { x: 'Jul', y: 75 }, { x: 'Aug', y: 76 },
+                                                            { x: 'Sep', y: 71 }, { x: 'Oct', y: 73 }, { x: 'Nov', y: 70 }, { x: 'Dec', y: 65 }],
+                                                    name: 'Core Fleet'
+                                                },				
+                                                {
+                                                    points: [{ x: 'Jan', y: 91 }, { x: 'Feb', y: 88 }, { x: 'Mar', y: 77 }, { x: 'Apr', y: 79 },
+                                                            { x: 'May', y: 68 }, { x: 'Jun', y: 62 }, { x: 'Jul', y: 52 }, { x: 'Aug', y: 39 },
+                                                            { x: 'Sep', y: 21 }, { x: 'Oct', y: 30 }, { x: 'Nov', y: 29 }, { x: 'Dec', y: 43 }],
+                                                    name: 'TC Fleet'
+                                                }
+                                            ],
+                                            load:"loadTheme",
+                                            isResponsive: true,
+                                            title:{text: 'Vessel Utilization Graph'},
+                                            size: { height: "300" },
+                                            legend: { visible: true }
+                                        });
+                        }); 
+              
+           
+
+                
+
+                $(document).ready(function () {
+               
+                        /// Call API
+                        var obj = null;
+                        /// log response  
+                        console.log("json response of sample UI   " + JSON.stringify(obj) );
+                        $("#live-ships").click(function (e) {
+                            //e.preventDefault();
+                             $("#live-ships-li").addClass('active');
+                            $("#live-ships-div").addClass('active in');
+                            
+                            $("#model-ships-div").removeClass('active in');
+                             $("#model-ships-li").removeClass('active');
+                            
+                            $("#create-model-div").removeClass('active in');
+                             $("#create-model-li").removeClass('active');
+                            window.location.href = "liveships-gantt.html";
+                           
+                        });
+                        $("#model-ships").click(function (e) {
+                            //e.preventDefault();
+                            
+                           $("#live-ships-li").removeClass('active');
+                            $("#live-ships-div").removeClass('active in');
+                            
+                            $("#model-ships-div").addClass('active in');
+                             $("#model-ships-li").addClass('active');
+                            
+                            $("#create-model-div").removeClass('active in');
+                             $("#create-model-li").removeClass('active');
+                             window.location.href = "model-ships-search.html";
+                        });
+
+                         $("#create-model").click(function (e) {
+                            //e.preventDefault();
+                             $("#live-ships-li").removeClass('active');
+                            $("#live-ships-div").removeClass('active in');
+                            
+                            $("#model-ships-div").removeClass('active in');
+                             $("#model-ships-li").removeClass('active');
+                            
+                            $("#create-model-div").addClass('active in');
+                             $("#create-model-li").addClass('active');
+                              window.location.href = "dashboard-gantt.html";
+                        });
+        
+                });
+       
+              
+
+         
+        </script>
+        <style type="text/css" class="cssStyles">
+            .AddVessel:before {
+               
+               content :  url('fonts/Add.png');
+            }
+
+             .EditLease:before {
+               content :  url('fonts/Edit.png');
+            }
+            .SaveModel:before {
+               content :  url('fonts/Save.png');
+            }
+
+            
+             .e-expandIcon:before {
+            content: "\e703";
+        }
+
+        .e-collapseIcon:before {
+            content: "\e707";
+        }
+
+        .e-aboveIcon:before {
+            content: "\e7e5";
+        }
+
+        .e-belowIcon:before {
+            content: "\e7e4";
+        }
+
+        .e-topIcon:before {
+            content: "\e7e2";
+        }
+
+        .e-bottomIcon:before {
+            content: "\e7e1";
+        }
+
+        .e-childIcon:before {
+            content: "\e7e3";
+        }
+
+
+
+
+
+    </style>
+
+
+    </head>
+
+    
+    <body style="padding-top:0px; color:green">   
+
+        <nav id = "topnavbar" class="" style="margin-bottom: 10px; background-color:#007f00;color:white">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>                        
+                </button>
+                <a class="navbar-brand" href="dashboard-gantt.html" style="color:white;"><strong>BP Shipping LTCC Dashboard</strong></a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                
+                 <ul class="nav navbar-nav navbar-right">
+                    <li id="create-model-li" class="" ><a id="create-model"  href="dashboard-gantt.html" style="color:white;font-weight:bold;" href="#">Home</a></li>
+                    <li id="live-ships-li" class="active"><a id="live-ships" href="liveships-gantt.html" style="color:white; font-weight:bold;" href="#">Live Ships</a></li>
+                   
+                    <li id="model-ships-li" class="" ><a id="model-ships" href="model-ships-search.html" style="color:white;font-weight:bold;" href="#">Model Ships</a></li>
+                    
+                    <li><a href="#" style="color:white;"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+                </div>
+            </div>
+            </nav>
+        <!--Add  Gantt control here-->  
+        <div class="page-container">
+            <div class="bs-example bs-example-tabs">
+                <div id="myTabContent" class="tab-content">
+
+                    <!-- Model Ships page start-->
+                    <!-- Dashboard Ships page start-->
+                    <div class="tab-pane  fade active in " id="create-model-div">
+                        <div class="col-sm-1"></div>
+                         <div class="col-sm-5  box search-form">
+                            <div class="box-header">
+                                <h3 class="box-title">Vessel Allocation Projection</h3>
+                            </div>   
+                            <div id="splineareacontainer" >
+                            </div>
+                         </div>
+
+                         <div class="col-sm-5 box search-form">
+                            <div class="box-header">
+                                <h3 class="box-title">Allocation of Vessel Types</h3>
+                            </div>
+                           <div id="piecontainer"></div>
+                         </div>
+                         <div class="col-sm-1"></div>
+
+                        <div class="col-sm-5 box search-form">
+                        <div class="box-header">
+                            <h3 class="box-title">Vessels Commitment</h3>
+                        </div>
+                         <div id="waterfallcontainer" >
+                         </div></div>
+                        <div class="col-sm-5  box search-form">
+                        <div class="box-header">
+                            <h3 class="box-title">Vessels Utilzation</h3>
+                        </div>
+                         <div  id="splinecontainer" >
+                         </div></div><div class="col-sm-1"></div>
+                        
+                    
+                    </div>
+                     <!-- Dashboard Ships page start-->
+                </div>
+            </div>
+        </div>
+
+
+    </body>
+
+</html>

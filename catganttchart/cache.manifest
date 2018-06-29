@@ -1,0 +1,25 @@
+CACHE MANIFEST
+# version 1
+      
+CACHE:
+login.html
+assesmentdashboard.html
+assesmentdetails.html
+assesmentsummary.html
+
+css/bootstrap.min.css
+css/font-awesome.min.css
+css/AdminLTE.css
+css/styles.css
+
+js/jquery.min.js
+js/bootstrap.min.js
+js/scripts.js
+js/modernizr-2.5.3.js
+
+      
+FALLBACK:
+
+      
+NETWORK:
+*

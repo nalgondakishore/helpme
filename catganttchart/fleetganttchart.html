@@ -1,0 +1,849 @@
+
+<!DOCTYPE html>
+    
+    <html>
+
+    <head>
+	    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+        <title>BP SHIPPING LTCC</title>
+        <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+         <link href="css/AdminLTE.css" rel="stylesheet" type="text/css" />
+  
+  		<link href="css/bootstrap.min.css" rel="stylesheet">
+
+
+
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="css/styles.css" rel="stylesheet">
+<link href="css/ej.theme.css" rel="stylesheet">
+<link href="css/ej.widgets.core.css" rel="stylesheet">
+ <!--<link href="http://cdn.syncfusion.com/16.1.0.37/js/web/flat-azure/ej.web.all.min.css" rel="stylesheet" />-->
+ <link href="css/stylish-portfolio.css" rel="stylesheet">
+
+         <script src="js/jquery-1.10.2.min.js"></script>    
+       <script src="js/jsrender.min.js"></script>  
+       <script src="js/jquery.globalize.min.js"></script>  
+       <script src="js/jquery.easing.1.3.min.js"></script>  
+       <script src="js/ej.web.all.js "></script>  
+       <script src="js/properties.js "></script>  
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- Bootstrap -->
+ 
+        <!-- style sheet for default theme(flat azure) -->
+        
+
+       
+        <script type = "text/javascript">
+ 
+                            
+                    var fleetGroups = [{
+                            fleetId: 1,
+                            fleetName: "Fleet 1"
+                        }, {
+                            fleetId: 2,
+                            fleetName: "Fleet 2"
+                        }, {
+                            fleetId: 3,
+                            fleetName: "Fleet 3"
+                    }];
+                    var vesselGanttResources = [{
+                            vesselId: 1,
+                            vesselName: "Anne Dodsworth",
+                            fleetId: 1
+                        }, {
+                            vesselId: 2,
+                            vesselName: "David William",
+                            fleetId: 1
+                        }, {
+                            vesselId: 3,
+                            vesselName: "Nancy Davolio",
+                            fleetId: 2
+                        }, {
+                            vesselId: 4,
+                            vesselName: "Janet Leverling",
+                            fleetId: 2
+                        }, {
+                            vesselId: 5,
+                            vesselName: "Romey Wilson",
+                            fleetId: 2
+                        }, {
+                            vesselId: 6,
+                            vesselName: "Michael Suyama",
+                            fleetId: 3
+                    }];
+                    var leaseGanttData = [{
+                        leaseId: 1,
+                        taskName: "Plan timeline",
+                        startDate: new Date("02/06/2018"),
+                        endDate: new Date("05/10/2018"),
+                       
+                        vesselId: [1]
+                    }, {
+                        leaseId: 2,
+                        taskName: "Plan budget",
+                        startDate: new Date("06/13/2018"),
+                        endDate: new Date("09/17/2018"),
+                       
+                        vesselId: [1]
+                    }, {
+                        leaseId: 3,
+                        taskName: "Allocate resources",
+                        startDate: new Date("02/20/2019"),
+                        endDate: new Date("08/24/2019"),
+                        
+                        vesselId: [1]
+                    }, {
+                        leaseId: 4,
+                        taskName: "Software Specification",
+                        startDate: new Date("04/10/2018"),
+                        endDate: new Date("07/12/2018"),
+                       
+                        vesselId: [2]
+                    }, {
+                        leaseId: 5,
+                        taskName: "Develop prototype",
+                        startDate: new Date("10/10/2018"),
+                        endDate: new Date("02/12/2019"),
+                        
+                        vesselId: [2]
+                    }, {
+                        leaseId: 6,
+                        taskName: "Get approval from customer",
+                        startDate: new Date("04/13/2019"),
+                        endDate: new Date("06/14/2019"),
+                       
+                        vesselId: [2]
+                    }, /*{
+                        leaseId: 7,
+                        taskName: "Development Task 1",
+                        startDate: new Date("07/17/2019"),
+                        endDate: new Date("09/21/2019"),
+                        duration: 5,
+                        progress: "0",
+                        vesselId: [3]
+                    }, {
+                        leaseId: 8,
+                        taskName: "Testing",
+                        startDate: new Date("12/20/2019"),
+                        endDate: new Date("02/24/2020"),
+                        duration: 5,
+                        progress: "0",
+                        vesselId: [3]
+                    }, {
+                        leaseId: 9,
+                        taskName: "Bug fix",
+                        startDate: new Date("04/17/2020"),
+                        endDate: new Date("08/02/2020"),
+                        duration: 5,
+                        progress: "0",
+                        vesselId: [3]
+                    }, {
+                        leaseId: 10,
+                        taskName: "Development Task 2",
+                        startDate: new Date("09/17/2020"),
+                        endDate: new Date("02/21/2021"),
+                        duration: 5,
+                        progress: "0",
+                        vesselId: [4]
+                    }, {
+                        leaseId: 11,
+                        taskName: "Testing",
+                        startDate: new Date("02/20/2018"),
+                        endDate: new Date("02/24/2018"),
+                        duration: 5,
+                        progress: "0",
+                        vesselId: [4]
+                    }, {
+                        leaseId: 12,
+                        taskName: "Bug fix",
+                        startDate: new Date("02/17/2018"),
+                        endDate: new Date("03/02/2018"),
+                        duration: 5,
+                        progress: "0",
+                        vesselId: [4]
+                    }, {
+                        leaseId: 13,
+                        taskName: "Development Task 3",
+                        startDate: new Date("02/17/2018"),
+                        endDate: new Date("02/21/2018"),
+                        duration: 5,
+                        progress: "0",
+                        vesselId: [5]
+                    }, {
+                        leaseId: 14,
+                        taskName: "Testing",
+                        startDate: new Date("02/20/2018"),
+                        endDate: new Date("02/24/2018"),
+                        duration: 5,
+                        progress: "0",
+                        vesselId: [5]
+                    }, {
+                        leaseId: 15,
+                        taskName: "Bug fix",
+                        startDate: new Date("02/17/2018"),
+                        endDate: new Date("03/02/2018"),
+                        duration: 5,
+                        progress: "0",
+                        vesselId: [5]
+                    }, {
+                        leaseId: 16,
+                        taskName: "Integration",
+                        startDate: new Date("02/27/2018"),
+                        endDate: new Date("03/05/2018"),
+                        duration: 5,
+                        progress: "0",
+                        vesselId: [6]
+                    }, {
+                        leaseId: 17,
+                        taskName: "Final Testing",
+                        startDate: new Date("03/02/2018"),
+                        endDate: new Date("03/07/2018"),
+                        duration: 5,
+                        progress: "0",
+                        vesselId: [6]
+                    }, {
+                        leaseId: 18,
+                        taskName: "Final Delivery",
+                        startDate: new Date("03/09/2018"),
+                        endDate: new Date("03/12/2018"),
+                        duration: 5,
+                        vesselId: [6]
+                    }*/];
+
+                $(function () {
+                    $("#resourceGantt").ejGantt({
+                     
+                            dataSource: leaseGanttData,
+                            allowColumnResize: true,
+                            isResponsive: true,
+                            taskIdMapping: "leaseId",
+                            taskNameMapping: "taskName",
+                            startDateMapping: "startDate",
+                            endDateMapping: "endDate",
+                            progressMapping: "progress",
+                            durationMapping: "duration",
+                            groupNameMapping: "fleetName",
+                            groupIdMapping: "fleetId",
+                            groupCollection: fleetGroups,
+                            resources: vesselGanttResources,
+                            resourceIdMapping: "vesselId",
+                            resourceNameMapping: "vesselName",
+                            resourceInfoMapping: "vesselId",
+                            viewType: ej.Gantt.ViewType.ResourceView,
+                            selectionMode: "cell",
+                           // contextMenuOpen: contextMenuOpen,
+                           // enableContextMenu: true,
+                            scheduleHeaderSettings: {
+                                scheduleHeaderType: "year",
+                            },
+                          //  stripLines: [{ day: "02/06/2018", label: "Project Start", lineStyle: "solid", lineColor: "Darkblue", lineWidth: 2 } ],
+                            load: function () {
+                                this.getColumns()[0].width = window.theme == "material" ? 60 : 30;
+                            },
+                            isResponsive: true,
+                          /*   toolbarSettings: {
+                           showToolbar: true,
+                            customToolbarItems: [{ text: "AddVessel", tooltipText: "Add Vessel" }, { text: "EditLease",tooltipText:"Edit Leasing Period" }],
+                             },
+                             */
+                            allowGanttChartEditing: true,
+                            allowDragAndDrop: true,
+                            editSettings: {
+                            allowEditing: true,
+                            allowAdding: true,
+                            allowDeleting: true,
+                            allowIndent: true,
+                            editMode: "normal"
+                                
+                            },
+                           // editDialogTemplate: editDialog,
+                            
+                            splitterSettings:{
+                                position: 150, 
+                            },
+
+                            load: function () {
+                                this.getColumns()[0].width = 180;
+                                
+                            },
+                            allowSorting: true,
+                            load: "load",
+                            create: "create",
+                            actionBegin: "actionBegin",
+                            actionComplete: "actionComplete",
+                            queryCellInfo: "queryCellInfo",
+                            beginEdit: "beginEdit",
+                            endEdit: "endEdit",
+                            rowDataBound: "rowDataBound",
+                            rowSelecting: "rowSelecting",
+                            rowSelected: "rowSelected",
+                            cellSelected: "cellSelected",
+                            taskbarEditing: "taskbarEditing",
+                            taskbarEdited: "taskbarEdited",
+                            showTaskNames: false,
+                           // taskbarSelected:"cellSelected",
+                            queryTaskbarInfo: "queryTaskbarInfo",
+                            expanding: "expanding",
+                            expanded: "expanded",
+                            collapsing: "collapsing",
+                            collapsed: "collapsed",
+                            toolbarClick: "toolbarclick",
+                           // renderedEditDialog:editDialog,
+                           //beginEdit:"editDialog",
+
+                        contextMenuTexts: {
+                            taskDetailsText: "Edit Task",
+                            deleteText: "Delete",
+                            
+                        },
+            
+                    });
+                    
+                }); 
+           
+
+                function load(args) {
+                    //this.getColumns()[0].width = window.theme == "material" ? 60 : 30;
+                console.log("Gantt <span class='eventTitle'>load</span> event called");
+                }		
+                function create(args) {
+                    console.log("Gantt <span class='eventTitle'>create</span> event called");
+                }
+                function actionBegin(args) {
+                    console.log("Gantt <span class='eventTitle'>actionBegin</span> event called" + args.requestType);
+                   
+                    if(args.requestType == "calledbeforeOpenEditDialog" )
+                   {
+                       console.log(args.data);
+                       editDialog(args.data);
+                       args.cancel = true;
+                   }
+                   if(args.requestType == "calledopenEditDialog" )
+                   {
+                       console.log(args.data);
+                       editDialog(args.data);
+                       args.cancel = true;
+                   }
+                   if(args.requestType == "beginedit" )
+                   {
+                       console.log(args.data);
+                       editDialog(args.data);
+                       args.cancel = true;
+                   }
+                   if(args.requestType == "calleddelete" )
+                   {
+                       console.log(args.data);
+                        editDialog(args.data);
+                       args.cancel = true;
+                   }
+                }
+                function actionComplete(args) {
+                    console.log("Gantt <span class='eventTitle'>actionComplete</span> event called");
+                    console.log(args.data);
+                    console.log(args.requestType);
+                }
+                function beginEdit(args) {
+                    console.log("Gantt <span class='eventTitle'>beginEdit</span> event called");
+                }		
+                function endEdit(args) {
+                    console.log("Gantt <span class='eventTitle'>endEdit</span> event called");
+                    console.log(args.data);
+                }
+                function queryCellInfo(args) {
+                    console.log("Gantt <span class='eventTitle'>queryCellInfo</span> event called");
+                }
+                function rowDataBound(args) {
+                    console.log("Gantt <span class='eventTitle'>rowDataBound</span> event called");
+                }
+                function rowSelecting(args) {
+                    console.log("Gantt <span class='eventTitle'>rowSelecting</span> event called");
+                }
+                function rowSelected(args) {
+                    console.log("Gantt <span class='eventTitle'>rowSelected</span> event called");
+                    //console.log(args.data);
+                }
+                function cellSelected(args) {
+                    console.log("Gantt <span class='eventTitle'>cellSelected</span> event called");
+                  
+                }
+                function expanding(args) {
+                    console.log("Gantt <span class='eventTitle'>expanding</span> event called");
+                }  		
+                function expanded(args) {
+                    console.log("Gantt <span class='eventTitle'>expanded</span> event called");
+                }  		
+                function collapsing(args) {
+                    console.log("Gantt <span class='eventTitle'>collapsing</span> event called");
+                } 		
+                function collapsed(args) {
+                    console.log("Gantt <span class='eventTitle'>collapsed</span> event called");
+                }  		
+                function taskbarEditing(args) {
+                    console.log("Gantt <span class='eventTitle'>taskbarEditing</span> event called");
+                }  		
+                function queryTaskbarInfo(args) {
+                console.log("Gantt <span class='eventTitle'>queryTaskBarInfo</span> event called");
+                } 		
+                function taskbarEdited (args) {
+                    console.log("Gantt <span class='eventTitle'>taskbarEdited </span> event called");
+                }
+                function toolbarclick(args) {
+                    console.log("Gantt <span class='eventTitle'>toolbarClick </span> event called ==  ", args.itemName);
+                    var toolbarLocale = {Add: "Add Vessel", Edit: "Edit Leasing Period" };
+                   // var locale = args.model.locale;
+                    if (args.itemName == toolbarLocale.Edit) {
+
+                      console.log("Edit event called");
+                        $("#editModal").modal('show');
+                         console.log("Gantt <span class='eventTitle'>toolbarClick </span> event called ==  ", args.data);
+                    }
+                   
+                    if (args.itemName == toolbarLocale.Add) {
+                      
+
+                          console.log("Reset event called");
+                         $("#addModal").modal('show');
+                          
+                        
+                    }
+                }
+
+                
+                function onClear() {
+                    $("#EventLog").html("");
+                }
+
+                $(document).ready(function () {
+               
+                        $("#live-ships").click(function (e) {
+                            //e.preventDefault();
+                             $("#live-ships-li").addClass('active');
+                            $("#live-ships-div").addClass('active in');
+                            
+                            $("#model-ships-div").removeClass('active in');
+                             $("#model-ships-li").removeClass('active');
+                            
+                           
+                        });
+                        $("#model-ships").click(function (e) {
+                            //e.preventDefault();
+                            
+                            $("#model-ships-div").addClass('active in');
+                             $("#model-ships-li").addClass('active');
+
+                            $("#live-ships-div").removeClass('active in');
+                             $("#create-model-div").removeClass('active in');
+                             $("#live-ships-li").removeClass('active');
+                        });
+
+                         $("#create-model").click(function (e) {
+                            //e.preventDefault();
+                             $("#create-model-div").addClass('active in');
+                             $("#model-ships-li").addClass('active');
+
+                            $("#model-ships-div").removeClass('active in');
+                            $("#live-ships-div").removeClass('active in');
+                            $("#live-ships-li").removeClass('active');
+                        });
+        
+                });
+       
+                function editDialog(data) {
+                    console.log("edit dialog args.data  " + data);
+                     $("#editModal").modal('show');
+                }
+        
+                function contextMenuOpen(args) {
+
+                    var isExpandable = true, isCollapsable = true, data;
+                    data = args.item;
+                    if (data && data.hasChildRecords) {
+                        if (data.expanded)
+                            isExpandable = false;
+                        else
+                            isCollapsable = false;
+                    } else {
+                        isExpandable = false;
+                        isCollapsable = false;
+                    }
+                    
+                       // args.contextMenuItems.push.apply(args.contextMenuItems, contextMenuItems);
+                    
+                }
+
+                function customMenuAddHandler(args) {
+                    var currentMenuId = args.menuId,
+                        tempData = args.data && $.extend({}, args.data.item), rowPosition;
+                    if (tempData)
+                        delete tempData[this.model.childMapping];
+
+                    if (currentMenuId == "Top") {
+                        rowPosition = ej.TreeGrid.RowPosition.Top;
+                    }
+                    else if (currentMenuId == "Bottom") {
+                        rowPosition = ej.TreeGrid.RowPosition.Bottom;
+                    }
+                    else if (currentMenuId == "Child") {
+                        rowPosition = ej.TreeGrid.RowPosition.Child;
+                    }
+                    this.addRecord(tempData, rowPosition);
+                }
+                function customMenuExpandCollapseHandler(args) {
+                    this.expandCollapseRecord(args.data.taskId);
+                }
+         
+        </script>
+        <style type="text/css" class="cssStyles">
+            .AddVessel:before {
+               
+               content : url('fonts/shipadd.jpg'); 
+               height:"10px"; width:"10px";
+            }
+
+             .EditLease:before {
+                 content: "\e900";
+            }
+             .e-expandIcon:before {
+            content: "\e703";
+        }
+
+        .e-collapseIcon:before {
+            content: "\e707";
+        }
+
+        .e-aboveIcon:before {
+            content: "\e7e5";
+        }
+
+        .e-belowIcon:before {
+            content: "\e7e4";
+        }
+
+        .e-topIcon:before {
+            content: "\e7e2";
+        }
+
+        .e-bottomIcon:before {
+            content: "\e7e1";
+        }
+
+        .e-childIcon:before {
+            content: "\e7e3";
+        }
+    </style>
+    </head>
+
+    
+       <body>   
+              <!-- navbar -->
+            <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>                        
+                </button>
+                <!--<a class="navbar-brand" href="#">WebSiteName</a>-->
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li id="live-ships-li" class="active"><a id="live-ships" href="#">Live Ships</a></li>
+                   
+                    <li id="model-ships-li" class="" ><a id="model-ships" href="#">Model Ships</a></li>
+                    <li id="create-model-li" class="" ><a id="create-model" href="#">Create Model</a></li>
+                   
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+                </div>
+            </div>
+            </nav>
+            <!--End Nav Bar-->  
+        <!--Add  Gantt control here-->  
+    <div class="page-container">
+                     <div class="bs-example bs-example-tabs">
+                          <!--   <ul id="myTab" class="nav nav-tabs">
+                               <li class="active"><a  id="live-ships" data-toggle="tab">Live SHIPS</a></li>
+                                <li class=""><a id="model-ships" data-toggle="tab">Models</a></li>
+                                
+                            </ul>-->
+                        </div>
+                        <div class="modal-body">
+                            <div id="myTabContent" class="tab-content">
+
+                                <div class="tab-pane fade active in " id="live-ships-div">
+                                    <form id="live-ships-form" class="form-horizontal">
+                                               <div class="cta-desc col-md-12">
+                                                        <div class="cta-desc col-md-4">
+
+                                                            <label class="col-md-4 control-label" for="selectbasic">Fleet:</label>
+                                                        <div class="col-md-6">
+                                                        <select id="selectbasic" name="selectbasic" class="form-control">
+                                                        <option value="1">Yes</option>
+                                                        <option value="2">No</option>
+                                                        </select>
+                                                    </div>    
+                                                    </div>
+                                                    <div class="cta-desc col-md-4">
+
+                                                            <label class="col-md-4 control-label" for="selectbasic">Vessel:</label>
+                                                        <div class="col-md-6">
+                                                        <select id="selectbasic" name="selectbasic" class="form-control">
+                                                        <option value="1">Yes</option>
+                                                        <option value="2">No</option>
+                                                        </select>
+                                                    </div>    
+                                                    </div>
+                                                    <div class="cta-desc col-md-4">
+
+                                                            <label class="col-md-4 control-label" for="selectbasic">Type:</label>
+                                                        <div class="col-md-6">
+                                                        <select id="selectbasic" name="selectbasic" class="form-control">
+                                                        <option value="1">Yes</option>
+                                                        <option value="2">No</option>
+                                                        </select>
+                                                    </div>    
+                                                    </div>
+                                                    </div> 
+                                                    <div class="cta-desc col-md-12"><br/></div>
+                                                    <div class="cta-desc col-md-12">
+                                                        <div class="cta-desc col-md-4">
+
+                                                            <label class="col-md-4 control-label" for="selectbasic">From Date:</label>
+                                                        <div class="col-md-6">
+                                                        <select id="selectbasic" name="selectbasic" class="form-control">
+                                                        <option value="1">Yes</option>
+                                                        <option value="2">No</option>
+                                                        </select>
+                                                    </div>    
+                                                    </div>
+                                                    <div class="cta-desc col-md-4">
+
+                                                            <label class="col-md-4 control-label" for="selectbasic">To Date:</label>
+                                                        <div class="col-md-6">
+                                                        <select id="selectbasic" name="selectbasic" class="form-control">
+                                                        <option value="1">Yes</option>
+                                                        <option value="2">No</option>
+                                                        </select>
+                                                    </div>    
+                                                    </div>
+                                                    <div class="cta-desc col-md-4">
+
+                                                            <label class="col-md-4 control-label" for="selectbasic">Status:</label>
+                                                        <div class="col-md-6">
+                                                        <select id="selectbasic" name="selectbasic" class="form-control">
+                                                        <option value="1">Yes</option>
+                                                        <option value="2">No</option>
+                                                        </select>
+                                                    </div>    
+                                                    </div>
+                                                    </div>    
+                                                    <div class="cta-desc col-md-12"><hr>     
+                                                   
+                                                        <div  class="cta-desc col-md-12" id="resourceGantt" ></div> 
+                                                    </div>
+                                    </form>
+                                </div>
+                                <div class="tab-pane fade " id="model-ships-div">
+                                    <form id="models-ships-form" class="form-horizontal">
+                                       <p>Ship Models yet to Launch</p>
+                                    </form>
+
+                          
+
+                                </div>
+
+                                <div class="tab-pane fade " id="create-model-div">
+                                    <div class="panel panel-success">
+                                            <div class="panel-heading">Element Summary</div>
+                                            
+                                            <div class="panel-body">
+                                        <div class="cta-desc col-md-12">
+                                                
+                                                            <div class="col-md-12">                     
+                                                                <textarea class="form-control" id="textarea" name="textarea"></textarea>
+                                                            </div>
+                                        </div>
+                                                
+                                        
+                                            
+                                            </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+           
+     
+    
+    </div>
+
+       <!-- Add Modal-->
+    <div class="modal fade bs-modal-sm" modal="showModal"  id="addModal" tabindex="-1" role="dialog"  aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+             <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                <br>
+                <div class="bs-example bs-example-tabs">
+                    <ul id="myTab" class="nav nav-tabs">
+                        <li class="active"><a  id="login-signin" data-toggle="tab">Add Vessel</a></li>
+                       
+                        
+                    </ul>
+                </div>
+                <div class="modal-body">
+                    <div id="myTabContent" class="tab-content">
+
+                        <div class="tab-pane fade active in" id="login-signin-div">
+                            <form class="form-horizontal">
+                                <fieldset>
+
+                                     <div class="form-group">
+                                    <label class="col-md-4 control-label" for="selectbasic"> Fleet Name:</label>
+                                    <div class="col-md-4">
+                                        <select id="selectfleet" name="selectfleet" class="form-control">
+                                        <option value="1">Fleet 1</option>
+                                        <option value="2">Fleet 2</option>
+                                        </select>
+                                    </div>
+                                    </div>            
+                                     <!-- Select Basic -->
+                                    <div class="form-group">
+                                    <label class="col-md-4 control-label" for="selectbasic"> Vessel Name:</label>
+                                    <div class="col-md-4">
+                                        <select id="selectvessel" name="selectvessel" class="form-control">
+                                        <option value="1">BRITISH EAGLE</option>
+                                        <option value="2">BRITISH OSTRICH</option>
+                                        </select>
+                                    </div>
+                                    </div>
+
+                                    <!-- Text input-->
+                                    <div class="form-group">
+                                    <label class="col-md-4 control-label" for="textinput">Lease StartDate</label>  
+                                    <div class="col-md-4">
+                                    <input id="startdate" name="startdate" type="text" placeholder="Lease Start Date:" class="form-control input-md">
+                                    
+                                    </div>
+                                    </div>
+
+                                    <!-- Text input-->
+                                    <div class="form-group">
+                                    <label class="col-md-4 control-label" for="textinput">Lease End Date</label>  
+                                    <div class="col-md-4">
+                                    <input id="enddate" name="enddate" type="text" placeholder="Lease End Date:" class="form-control input-md">
+
+                                    </div>
+                                    </div>
+
+                                    <div class="form-group" margin-top-02>
+                                     <div class="col-md-4"></div>
+                                    <div class="col-md-4">
+                                       <div class="controls">
+                                            <button id="addvessel" name="addvessel"  class="btn  btn-success">Add Vessel</button>
+                                        </div>   </div>
+                                    </div>
+
+                                           
+                                   
+                                </fieldset>
+                            </form>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <center>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade bs-modal-sm" modal="showModal"  id="editModal" tabindex="-1" role="dialog"  aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                 <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <br>
+                <div class="bs-example bs-example-tabs">
+                    <ul id="myTab" class="nav nav-tabs">
+                        <li class="active"><a  id="login-signin" data-toggle="tab">Edit Vessel</a></li>
+                       
+                        
+                    </ul>
+                </div>
+                <div class="modal-body">
+                    <div id="myTabContent" class="tab-content">
+
+                        <div class="tab-pane fade active in" id="login-signin-div">
+                            <form class="form-horizontal">
+                                <fieldset>
+
+
+                                                                    <!-- Select Basic -->
+                                    <div class="form-group">
+                                    <label class="col-md-4 control-label" for="selectbasic"> Vessel Name:</label>
+                                    <div class="col-md-4">
+                                        <select id="selectbasic" name="selectbasic" class="form-control">
+                                        <option value="1">BRITISH EAGLE</option>
+                                        <option value="2">BRITISH OSTRICH</option>
+                                        </select>
+                                    </div>
+                                    </div>
+
+                                    <!-- Text input-->
+                                    <div class="form-group">
+                                    <label class="col-md-4 control-label" for="textinput">Lease StartDate</label>  
+                                    <div class="col-md-4">
+                                    <input id="startdate" name="startdate" type="text" placeholder="Lease Start Date:" class="form-control input-md">
+                                    
+                                    </div>
+                                    </div>
+
+                                    <!-- Text input-->
+                                    <div class="form-group">
+                                    <label class="col-md-4 control-label" for="textinput">Lease End Date</label>  
+                                    <div class="col-md-4">
+                                    <input id="enddate" name="enddate" type="text" placeholder="Lease End Date:" class="form-control input-md">
+
+                                    </div>
+                                    </div>
+
+                                    <div class="form-group col-sm-12" margin-top-02>
+                                     <div class="col-md-3 col-sm-0"></div>
+                                    <div class="col-md-3 col-sm-6">
+                                       <div class="controls">
+                                            <button id="addvessel" name="addvessel"  class="btn btn-sm btn-success">Update Leasing </button>
+                                        </div>  
+                                    </div>
+                                       <div class="col-md-3 col-sm-6">
+                                       <div class="controls">
+                                             <button id="deletevessel" name="addvessel"  class="btn btn-sm  btn-danger">Delete Leasing </button>
+                                        </div>  
+                                    </div>
+                                    <div class="col-md-3 col-sm-0"></div>
+                                    </div>
+
+                                           
+                                   
+                                </fieldset>
+                            </form>
+                        </div>
+                        
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
